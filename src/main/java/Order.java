@@ -4,11 +4,12 @@ public class Order {
             int percentPrice = (int) (product.getPrice() * 10 / 100);
             int actualPrice = product.getPrice() - percentPrice;
             Product currentProduct = product.setPrice(actualPrice);
-            System.out.println("Актуальная стоимость продукта: " + currentProduct.getPrice());
+            System.out.println(
+                    "Актуальная стоимость продукта " + currentProduct.getName() + " равна: " + currentProduct.getPrice());
         }
     }
 
     public void addProduct(Product product) {
-        System.out.println("Стоимость продукта: " + product.getPrice());
+        System.out.println("Стоимость продукта " + product.getName() + " равна: " + product.getPrice());
     }
 }

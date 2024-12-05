@@ -1,12 +1,14 @@
 public class Basket {
     private Product product;
-    public static String items = "";
+    public String items = "";
     public int totalPrice = 0;
     private int limit = 1_000_000;
     private double totalWeight = 0;
+    public static int countBasket = 0;
 
     public Basket() {
         items = "Список товаров: ";
+        countBasket += 1;
     }
 
     public Basket(int limit) {
