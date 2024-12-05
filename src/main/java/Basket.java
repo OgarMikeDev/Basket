@@ -4,11 +4,9 @@ public class Basket {
     public int totalPrice = 0;
     private int limit = 1_000_000;
     private double totalWeight = 0;
-    private static int countBasket = 0;
 
     public Basket() {
         items = "Список товаров: ";
-        increaseCountBasket(1);
     }
 
     public Basket(int limit) {
@@ -78,14 +76,6 @@ public class Basket {
             return;
         }
         this.totalPrice = totalPrice;
-    }
-
-    public static int getCountBasket() {
-        return countBasket;
-    }
-
-    public static void increaseCountBasket(int countBasket) {
-        Basket.countBasket += countBasket;
     }
 
     @Override

@@ -17,6 +17,5 @@ public class Main {
 
         System.out.println("Первая корзина: " + firstBasket + "\n");
         System.out.println("Вторая корзина: " + secondBasket + "\n");
-        System.out.println("Кол-во корзин: " + Basket.getCountBasket());
     }
 }
