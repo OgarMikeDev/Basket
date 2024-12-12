@@ -1,14 +1,18 @@
 public class Basket {
     private Product product;
-    public String items = "";
-    public int totalPrice = 0;
+    private String items = "";
+    private int totalPrice = 0;
+    private static int totalPriceAllBaskets = 0;
     private int limit = 1_000_000;
     private double totalWeight = 0;
+    private int countItems;
+    private static int countAllItems = 0;
     private static int countBasket = 0;
 
     public Basket() {
         items = "Список товаров: ";
         increaseCountBasket(1);
+        countItems = 0;
     }
 
     public Basket(int limit) {
@@ -34,9 +38,15 @@ public class Basket {
         } else if (items.isEmpty()) {
             items += name + " - " + price;
             totalPrice += price;
+            totalPriceAllBaskets += price;
+            countItems += 1;
+            countAllItems += 1;
         } else {
             items += "\n" + name + " - " + price;
             totalPrice += price;
+            totalPriceAllBaskets += price;
+            countItems += 1;
+            countAllItems += 1;
         }
     }
 
@@ -78,6 +88,7 @@ public class Basket {
             return;
         }
         this.totalPrice = totalPrice;
+        totalPriceAllBaskets += totalPrice;
     }
 
     public static int getCountBasket() {
@@ -88,10 +99,21 @@ public class Basket {
         Basket.countBasket += countBasket;
     }
 
+    public int getAverageCurrentBasket() {
+        return totalPrice / countItems;
+    }
+
+    public static int getAverageAllBaskets() {
+        return totalPriceAllBaskets / countAllItems;
+    }
+
     @Override
     public String toString() {
-        return "Basket{" + "items='" + items + '\'' +
-                ", totalPrice=" + totalPrice + ", limit=" + limit +
-                ", totalWeight=" + totalWeight + '}';
+        return
+                "Items: " + items +
+                "; Total price: " + totalPrice +
+                "; Limit: " + limit +
+                "; Total weight: " + totalWeight +
+                "; Average price basket: " + getAverageCurrentBasket();
     }
 }
